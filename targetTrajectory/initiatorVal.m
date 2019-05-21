@@ -3,8 +3,12 @@ prevTime = T;
 trajectory = [];
 
 
-%% start off with initiator
-%            [   x   ;y;z;Vx ;Vy;Vz;ax;ay;az]
-stateInit = [6378137;0;0;100;0 ;0 ;0 ;0 ;0 ];
-stateRes = real_state(stateInit,T,prevTime);
-trajectory = [trajectory, [stateRes;prevTime]];
+%% start off with initiator 
+% constant velocity motion model
+%            [  x ;  y  ;  z  ; Vx ;  Vy ;Vz]
+stateInit = [40000;20000;10000;-100;-200 ;0 ];
+stateRes = find_state_cv(stateInit,T,prevTime);
+trajectory = [trajectory, [stateRes(1:6);prevTime]];
+
+% constant acceleration motion model
+%            [  x ;  y  ;  z  ; Vx ;  Vy ;Vz ; ax ; ay ; az ]
