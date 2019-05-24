@@ -27,7 +27,7 @@ for i=1:2000
         stateRes = state;
     end
 
-    trajectory = [trajectory, [state(1:6);prevTime]];
+    trajectory = [trajectory, [state(1:6);T]];
 end
 
 dataX = trajectory(1,:);
