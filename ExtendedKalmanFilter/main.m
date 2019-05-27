@@ -8,7 +8,7 @@ for i=1:size(trajectory,2)
     trajectorywithNoise(1:3,i) = trajectory(1:3,i) + (- 20 + rand*40) ; % random values are between -20 and +20
     trajectorywithNoise(4:6,i) = trajectory(4:6,i) + (- 1  + rand*2) ; % random values are between -1 and +1
     
-    y = ExtendedKalmanFilter_3d(trajectorywithNoise(1:6,i),0.1);
+    y = KalmanFilter_3d(trajectorywithNoise(1:6,i),0.1);
     
     state = [state y];
 end
