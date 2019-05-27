@@ -1,4 +1,4 @@
-function [ y ] = ExtendedKalmanFilter_3d( z,time )
+function [ y ] = KalmanFilter_3d( z,time )
 persistent x_est p_est                % could give an input and output. But persistent is simple.
 if isempty(x_est)
     x_est = zeros(9,1);             
