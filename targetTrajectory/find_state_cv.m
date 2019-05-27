@@ -6,6 +6,10 @@ Z = zeros(3);
 
 A = [I,I*time;Z,I];
 
+if size(targetPos,1) == 9
+    targetPos = targetPos(1:6);
+end
+
 realState = A*targetPos;
 
 end

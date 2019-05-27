@@ -3,7 +3,7 @@ clear all; clear; clc
 initiatorVal;
 
 %% 
-for i=1:2000
+for i=1:2400
     prevTime = T;
     T = T + 0.1;
     
@@ -21,13 +21,17 @@ for i=1:2000
         acc = [-8;-2;-4];
         state = find_state_ca(stateRes,T,prevTime,acc);
         stateRes = state;
-    elseif (i <= 2000)
-        angVel = 0.1;
+    elseif (i <= 2400)
+        angVel = 0.005/0.1;
+%         acc = [0 0 0];
         state = find_state_ct(stateRes,T,prevTime,acc,angVel);
         stateRes = state;
     end
-
-    trajectory = [trajectory, [state(1:6);T]];
+    
+    if size(state,1) == 6
+        state = [state;0;0;0];
+    end
+    trajectory = [trajectory, [state(1:9);T]];
 end
 
 dataX = trajectory(1,:);

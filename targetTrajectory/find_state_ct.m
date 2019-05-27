@@ -1,5 +1,5 @@
 function [ realState ] = find_state_ct( targetPos,T, prevTime, acc, angVel )
-
+% coordinated turn motion model
 time = T - prevTime;
 I = eye(3);
 Z = zeros(3);
